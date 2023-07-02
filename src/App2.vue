@@ -1,12 +1,11 @@
 <template>
-
-  <input 
-    type="type" 
-    v-model="name"
-  >
+  <div class="name"> 
+    {{ name }} 
+  </div>
+  <input :type="type" :value="name">
   <button
       class = "btn btn-primary" 
-      @click = "onSubmit" 
+      @click = "updatename" 
     >
     Click 
   
@@ -20,16 +19,22 @@ export default {
  
   setup() {
     const name = ref('hyejeong');
+    const type = ref('text');
+    const nameclass = ref('name') 
 
-    const onSubmit = () => {
-      alert(name.value);
+    const updatename = () => {
+     // console.log('hello world');
+      name.value = 'shin';
+      type.value = ('text');
     };
     // ref 템플릿 안에서는 value 없이 사용가능
     // const greet = greeting(name);
 
     return {
       name,
-      onSubmit,
+      updatename,
+      type,
+      nameclass,
     };
 
   }
